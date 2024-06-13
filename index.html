@@ -296,11 +296,11 @@
                 <div class="col-md-6">
                     <div class="video">
                         <button type="button" class="btn-play" data-bs-toggle="modal" data-src="https://www.youtube.com/embed/nxlCvDLodPU" data-bs-target="#videoModal">
-
                             <span></span>
                         </button>
                     </div>
                 </div>
+                
             </div>
         </div>
 
@@ -401,6 +401,22 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            var videoModal = document.getElementById('videoModal');
+            videoModal.addEventListener('show.bs.modal', function (event) {
+                var button = event.relatedTarget;
+                var videoSrc = button.getAttribute('data-src');
+                var video = document.getElementById('video');
+                video.src = videoSrc;
+            });
+
+            videoModal.addEventListener('hide.bs.modal', function (event) {
+                var video = document.getElementById('video');
+                video.src = '';
+            });
+        });
+    </script>
 </body>
 
 </html>
